@@ -9,8 +9,8 @@ cap = cv.VideoCapture(0)
 
 def FindCircles(frame):
 
-    circles = cv.HoughCircles(frame, cv2.HOUGH_GRADIENT, 1, 10, np.array([]), 100, 30, 1, 20)
-    if circles is not None:
+    circles = cv.HoughCircles(frame, cv2.HOUGH_GRADIENT, 1, 10, np.array([]), 100, 30, 30, 1000)
+    if len(circles) != 0:
         '''
         a, b, c = circles.shape
         print(str(circles))
@@ -20,7 +20,7 @@ def FindCircles(frame):
                       cv.LINE_AA)  # draw center of circle'''
 
         #cv.imshow("detected circles", frame)
-        print('Circle!')
+        print(circles)
 
 
 while cap.isOpened():
